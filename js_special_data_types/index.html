@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Special Data Types</title>
+    <script>
+        /* Feature Set 1 */
+        var x = null;
+        var y;
+        var z = "bathysphere";
+
+        /* Feature Set 2. */
+        var output1 = (x == y);
+        var output2 = (x == z);
+        var output3 = (y == z);
+
+        console.log("output1 = ", output1);
+        console.log("output2 = ", output2);
+        console.log("output3 = ", output3);
+
+        /* Feature Set 3. */
+        var output4 = "x is an " + typeof(x);
+        var output5 = "y is " + typeof(y);
+        var output6 = "z is a " + typeof(z);
+
+        console.log("output4 = ", output4);
+        console.log("output5 = ", output5);
+        console.log("output6 = ", output6);
+    </script>
+</head>
+<body>
+    <h3>No browser window output; use &lt;F12&gt; to see output.</h3>
+</body>
+</html>
