@@ -2,4 +2,3 @@
 ### Event Delegation with jQuery
 
 >#### Instructions can be found <a href="http://learning-fuze.github.io/prototypes_C7/#/JS-Event-Delegation" target="_blank">HERE</a>
->#### Available 1/26/2016 @ 1:00pm
