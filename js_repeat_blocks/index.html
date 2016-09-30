@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Repeat Blocks</title>
+    <script>
+        var i;
+        console.log('Feature Set 1: for loops');
+        var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        var mixedArray = [4, 56, 11, 13, 97, 22, 7, 36, 19, 5, 8, 10];
+
+        console.log('Forward:');
+        for (i = 0; i < numbers.length; i++) {
+            console.log(numbers[i]);
+        }
+        console.log('Backward:');
+        for (i = numbers.length - 1; i >= 0; i--) {
+            console.log(numbers[i]);
+        }
+        console.log('Odds from original numbers:');
+        for (i = 0; i < numbers.length; i++) {
+            if (numbers[i] % 2 ===1) {
+                console.log(numbers[i]);
+            }
+        }
+        console.log('Odds from mixedArray:');
+        for (i = 0; i < mixedArray.length; i++) {
+            if (mixedArray[i] % 2 ===1) {
+                console.log(mixedArray[i]);
+            }
+        }
+
+        console.log('');
+        console.log('Feature Set 2: for..in');
+        var classRoom = {desk1: 'Stu', desk2: 'Peggy', desk3: 'LoneStar', desk4: 'George', desk5: 'Sheldon'};
+        for (var desk in classRoom) {
+            console.log(classRoom[desk], 'is in', desk);
+        }
+
+        console.log('');
+        console.log('Feature Set 3: while loops');
+        var studentArray = [{name: "Bob", grade: 87}, {name: "Fred", grade: 82}, {name: "George", grade: 93}, {name: "Robert", grade: 85}];
+        console.log('findStudent(\'George\'): ', findStudent('George'));
+        console.log('findStudent(\'Fred\'): ', findStudent('Fred'));
+        console.log('findStudent(\'Hank\'): ', findStudent('Hank'));
+
+        function findStudent(searchName) {
+            var i = 0;
+            var length = studentArray.length;
+            var found = false;
+
+            while (!found && i < length) {
+                var student = studentArray[i];
+                if (student.name === searchName) {
+                    found = true;
+                    break;
+                }
+                i++;
+            }
+
+            if (found) {
+                return 'Found ' + searchName + ', their grade is: ' + student.grade;
+            } else {
+                return 'Student ' + searchName + ' not found.';
+            }
+        }
+
+    </script>
+</head>
+<body>
+<h3>No direct window output; refer to console log for results.</h3>
+</body>
+</html>
