@@ -41,10 +41,46 @@
     <script>
         $(document).ready(function () {
             //playground 1 code
+            var divObj;
+
+            divObj = $("#playground1");
+            divObj.append($('<h1></h1>').text('I am a heading'));
+            divObj.append($('<p></p>').text('This is an awesome paragraph'));
+            divObj.append($('<p></p>').text('This has red text').css('color', 'red'));
 
             //playground 2 code
+            divObj = $('#playground2');
+            divObj.append($('<div></div>').text('Here is some awesome div text')
+                    .addClass('awesome_class'));
+            divObj.append($('<div></div>').text('Here is MORE awesome div text')
+                    .addClass('awesome_class')
+                    .attr('id', my_awesome_div2));
+            divObj.append($('<div></div>').html('Here is <strong>EVEN MORE</strong> awesome div text')
+                    .addClass('awesome_class')
+                    .attr({'id' : 'my_awesome_div3', 'data-coolness' : 'high'}));
 
             //playground 3 code
+            /* Question: Is there any advantage to building up the entire tree of structures before appending it to
+               the div to cause it to display?  Rather that adding a branch, then a branch on a branch, etc.?
+             */
+            divObj = $('#playground3');
+            var ulObj = $('<ul></ul>').addClass('neato');
+            divObj.append(ulObj);
+            for (var i = 1; i <= 3; i++) {
+                var liObj = $("<li></li>").text("Link " + i.toString());
+                ulObj.append(liObj);
+            }
+
+            var figureObj = $("<figure></figure>").addClass("awesome_picture");
+            divObj.append(figureObj);
+            var imgObj = $("<img></img>").attr("src",
+                    "http://comerecommended.com/wp-content/uploads/2013/01/how-to-get-awesome-back.jpg");
+            figureObj.append(imgObj);
+            var figcaptionObj = $("<figcaption></figcaption>").text("That's right, ");
+            figureObj.append(figcaptionObj);
+            var spanObj = $("<span></span>").text("you are").addClass("bold_text");
+            figcaptionObj.append(spanObj);
+
         });
     </script>
 </head>
