@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript OOP Prototype</title>
+    <script>
+        // CoinStack prototype.
+        function CoinStack(count) {
+            this.count = count;
+            this.addCoins = function(count) { this.count += count };
+            this.getCount = function() { return this.count };
+            this.removeCoins = function(requestCount) {
+                var actualCount = Math.min(requestCount, this.count);
+                this.count -= actualCount;
+                return actualCount;
+            }
+        }
+
+        var gCoinStack = null;
+        var tempCount = 0;
+
+        // Feature Set 1.
+        console.log('Initial population of 50.');
+        gCoinStack = new CoinStack(50);
+        console.log('Current count: ' + gCoinStack.getCount());
+
+        console.log('Add 15.');
+        gCoinStack.addCoins(15);
+        console.log('Current count: ' + gCoinStack.getCount());
+
+        // Feature Set 2.
+        tempCount = gCoinStack.removeCoins(37);
+        console.log('Removing 37, got ' + tempCount);
+        console.log('Current count: ' + gCoinStack.getCount());
+
+        tempCount = gCoinStack.removeCoins(55);
+        console.log('Removing 55, got ' + tempCount);
+        console.log('Current count: ' + gCoinStack.getCount());
+
+        // Feature Set 3.
+        // Instructions say to use the name "transfer_coins", but that is somewhat
+        // ambiguous, so I decided to use "receiveCoins".
+        CoinStack.prototype.receiveCoins = function(fromStack, requestedCount) {
+            var actualCount = fromStack.removeCoins(requestedCount);
+            this.addCoins(actualCount);
+            return actualCount;
+        };
+
+        var dansCoins = new CoinStack(50);
+        var ericsCoins = new CoinStack(50);
+        console.log('ericsCoins count: ' + ericsCoins.getCount() + ', dansCoins count: ' + dansCoins.getCount());
+
+        console.log('Transferring 30 from dan to eric.');
+        ericsCoins.receiveCoins(dansCoins, 30);
+        console.log('ericsCoins count: ' + ericsCoins.getCount() + ', dansCoins count: ' + dansCoins.getCount());
+
+        console.log('Transferring 120 from eric to dan.');
+        dansCoins.receiveCoins(ericsCoins, 120);
+        console.log('ericsCoins count: ' + ericsCoins.getCount() + ', dansCoins count: ' + dansCoins.getCount());
+    </script>
+</head>
+<body>
+<h1>JavaScript OOP Prototype - see console log for results.</h1>
+</body>
+</html>
