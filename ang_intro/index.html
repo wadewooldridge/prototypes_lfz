@@ -1,12 +1,35 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app>
 <head>
     <meta charset="UTF-8">
     <title>Angular Intro</title>
     <!-- Add Angular CDN below -->
-
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
 </head>
 <body>
+<!-- Feature Set 1 -- toe-testing Angular. -->
+<div ng-init="myVar = 'Now is the time'">
+    <h3>Feature Set 1: myVar is currently: '{{ myVar }}'</h3>
+</div>
 
+<!-- Feature Set 2 -- the water is fine. -->
+<div ng-init="carArray = ['Honda', 'Hyundai', 'Kia', 'Mazda', 'Toyota'];">
+    <h3>Feature Set 2: carArray</h3>
+    <ul>
+        <li ng-repeat="car in carArray">{{ car }}</li>
+    </ul>
+</div>
+
+<!-- Feature Set 3 -- it's magic! -->
+<div>
+    <h3>Feature Set 3: ng-model</h3>
+    <label for="first-input">First name: </label>
+    <input type="text" id=first-input ng-model="firstName">
+    <label for="last-input">Last name: </label>
+    <input type="text" id=last-input ng-model="lastName">
+    <label for="tel-input">Telephone #</label>
+    <input type="text" id=tel-input ng-model="telephone" placeholder="nnn-nnn-nnnn">
+    <p>{{firstName}} {{lastName}}'s telephone is "{{telephone}}"</p>
+</div>
 </body>
 </html>
