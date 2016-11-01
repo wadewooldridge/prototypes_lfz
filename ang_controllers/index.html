@@ -4,9 +4,74 @@
     <meta charset="UTF-8">
     <title>Angular Controllers</title>
     <!-- Add the AngularJS CDN below -->
-
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
 </head>
-<body>
+<body ng-app="superAppAlpha">
+<div ng-controller="formController as fc">
+    <label for="first-name">First Name:</label>
+    <input type="text" id="first-name" ng-model="fc.form.firstName">
+    <label for="last-name">Last Name:</label>
+    <input type="text" id="last-name" ng-model="fc.form.lastName">
+    <label for="email">Email:</label>
+    <input type="text" id="email" ng-model="fc.form.email">
+    <label for="comments">Comments:</label>
+    <textarea id="comments" ng-model="fc.form.comments" ng-disabled="fc.commentsFull()">
 
+    </textarea>
+    <p>Characters remaining: {{fc.maxCommentsLength - fc.form.comments.length}}</p>
+    <hr>
+    <button class="btn btn-primary" ng-click="fc.addForm()">Add the form</button>
+    <hr>
+    <table class="table table-bordered table-condensed table-striped">
+        <tr>
+            <th>#</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Comments</th>
+        </tr>
+        <tr ng-repeat="form in fc.formArray">
+            <td>{{$index}}</td>
+            <td>{{form.firstName + " " + form.lastName}}</td>
+            <td>{{form.email}}</td>
+            <td>{{form.comments}}</td>
+        </tr>
+    </table>
+</div>
 </body>
+<script>
+    var app = angular.module('superAppAlpha', []);
+    app.controller('formController', function() {
+        // Main form, and the array of such forms.
+        this.form = {};
+        this.formArray = [];
+
+        // Max length for comments text area.
+        this.maxCommentsLength = 50;
+        this.commentsFull = function() {
+            return (this.form.comments !== undefined && this.form.comments.length >= this.maxCommentsLength);
+        };
+
+        // Add the current form contents to the formArray.
+        this.addForm = function() {
+            console.log('addForm');
+            // Do some basic checks that data has been provided.
+            if (this.form.firstName !== undefined &&
+                this.form.firstName.length &&
+                this.form.lastName !== undefined &&
+                this.form.lastName.length &&
+                this.form.email !== undefined &&
+                this.form.email.length) {
+                this.formArray.push(this.form);
+                // Clear the contents of the form.
+                this.form = {};
+            } else {
+                alert('Please provide at least a first name, last name, and e-mail address.');
+            }
+        };
+    });
+
+</script>
 </html>
