@@ -1,0 +1,35 @@
+//EXERCISE 1
+
+
+
+//EXERCISE 2
+
+
+
+//EXERCISE 3
+
+
+
+//EXERCISE 4
+
+
+
+//EXERCISE 5
+
+
+
+//EXERCISE 7
+
+
+
+//EXERCISE 8
+
+
+
+//EXERCISE 9
+
+
+
+//EXERCISE 10
+
+
