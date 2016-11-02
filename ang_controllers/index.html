@@ -25,28 +25,36 @@
     <hr>
     <button class="btn btn-primary" ng-click="fc.addForm()">Add the form</button>
     <hr>
-    <table class="table table-bordered table-condensed table-striped">
-        <tr>
-            <th>#</th>
-            <th>Full Name</th>
-            <th>Email</th>
-            <th>Comments</th>
-        </tr>
-        <tr ng-repeat="form in fc.formArray">
-            <td>{{$index}}</td>
-            <td>{{form.firstName + " " + form.lastName}}</td>
-            <td>{{form.email}}</td>
-            <td>{{form.comments}}</td>
-        </tr>
-    </table>
+    <div ng-controller="tableController as tc">
+        <p>Total entries: {{tc.getRowCount()}}</p>
+        <table class="table table-bordered table-condensed table-striped">
+            <tr>
+                <th>#</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Comments</th>
+                <th>Operations</th>
+            </tr>
+            <tr ng-repeat="form in formArray">
+                <td>{{$index}}</td>
+                <td>{{form.firstName + " " + form.lastName}}</td>
+                <td>{{form.email}}</td>
+                <td>{{form.comments}}</td>
+                <td><button class="btn btn-small btn-danger" ng-click="tc.deleteRow($index)">Delete</button></td>
+            </tr>
+        </table>
+    </div>
 </div>
 </body>
 <script>
     var app = angular.module('superAppAlpha', []);
-    app.controller('formController', function() {
-        // Main form, and the array of such forms.
+    // Controller #1: the form controller.
+    app.controller('formController', function($scope) {
+        // Main form to collect data from the input and textarea fields.
         this.form = {};
-        this.formArray = [];
+
+        // Main array of collected forms.
+        $scope.formArray = [];
 
         // Max length for comments text area.
         this.maxCommentsLength = 50;
@@ -64,13 +72,27 @@
                 this.form.lastName.length &&
                 this.form.email !== undefined &&
                 this.form.email.length) {
-                this.formArray.push(this.form);
+                $scope.formArray.push(this.form);
                 // Clear the contents of the form.
                 this.form = {};
             } else {
                 alert('Please provide at least a first name, last name, and e-mail address.');
             }
         };
+    });
+
+    // Controller #2: the table controller. This is nested in the form controller, and $scope gives a view.
+    app.controller('tableController', function($scope) {
+        this.deleteRow = function(row) {
+            console.log('deleteRow: ' + row);
+            $scope.formArray.splice(row, 1);
+        };
+
+        this.getRowCount = function() {
+            console.log('getRowCount: ' + $scope.formArray.length);
+            return $scope.formArray.length;
+        };
+
     });
 
 </script>
