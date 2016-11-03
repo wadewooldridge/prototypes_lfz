@@ -19,16 +19,15 @@
     <h3 ng-show="gc.searchStatus !== null && gc.searchStatus.length > 0">{{gc.searchStatus}}</h3>
     <table class="table table-bordered table-condensed table-striped">
         <thead ng-show="gc.searchResults.length > 0">
-        <th>xx</th>
-        <th>xx</th>
-        <th>xx</th>
-        <th>xx</th>
-        <th>xx</th>
+        <th>Artist</th>
+        <th>Track</th>
+        <th>Artwork</th>
         </thead>
         <tbody>
         <tr ng-repeat="entry in gc.searchResults">
             <td>{{entry.artistName}}</td>
             <td>{{entry.trackName}}</td>
+            <td><img src="{{entry.artworkUrl100}}"></td>
         </tr>
         </tbody>
     </table>

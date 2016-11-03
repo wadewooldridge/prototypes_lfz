@@ -11,7 +11,9 @@ app.controller('GammaController', function($http, $log) {
     this.searchResults = [];
 
     this.getUrl = function () {
-        var url = 'https://itunes.apple.com/search?term=' + this.searchText + '&callback=JSON_CALLBACK';
+        // Replace any spaces with plus signs for the URL.
+        var temp = this.searchText.replace(/ /g, '+');
+        var url = 'https://itunes.apple.com/search?term=' + temp + '&callback=JSON_CALLBACK';
         $log.log('getUrl: "' + url + '"');
         return url;
     };
@@ -28,7 +30,6 @@ app.controller('GammaController', function($http, $log) {
                 $log.log('startSearch: success');
                 self.searchStatus = 'Search successful: ' + response.data.resultCount + ' items returned';
                 self.searchResults = response.data.results;
-                debugger;
             },
             function(response) {
                 $log.log('startSearch: failure');
