@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX Test of SuperGlobals</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script>
+        function onButtonClick() {
+            console.log('onButtonClick');
+            $.ajax({
+                url:        'http://localhost/prototypes_C11/php_superglobals/index.php',
+                dataType:   'text',
+                method:     'post',
+                data:       {
+                            howdy: $('#howdy-checkbox').prop('checked'),
+                            mainText: $('#main_text_area').val()
+                            },
+                success: function(result) {
+                    console.log('AJAX success');
+                    $('#results-div').html(result);
+                },
+                error: function(result) {
+                    console.log('AJAX error');
+                    $('#results-div').text('AJAX error');
+                }
+            });
+
+        }
+
+        $(document).ready(function() {
+            console.log('Document: ready');
+            $('#send-ajax-button').click(onButtonClick);
+        });
+
+    </script>
+</head>
+<body>
+<h3>Form:</h3>
+<form>
+    <hr>
+    <label for="howdy-checkbox">Howdy: </label>
+    <input type="checkbox" id="howdy-checkbox" checked>
+    <label for="main_text_area">Text:</label>
+    <textarea id="main_text_area"></textarea>
+    <hr>
+</form>
+<button id="send-ajax-button">Send AJAX</button>
+<hr>
+<h3>Results:</h3>
+<hr>
+<div id="results-div"></div>
+<hr>
+</body>
+</html>

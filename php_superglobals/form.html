@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Test of PHP SuperGlobals</title>
+</head>
+<body>
+<h2>Form</h2>
+<form action="http://localhost/prototypes_C11/php_superglobals/index.php" method="get">
+    <label for="my_name">Name:</label>
+    <input type="text" name="name" id="my_name">
+    <div class="form-group">
+        <label for="my_gender">Gender:</label>
+        <select class="form-control" name="gender" id="my_gender">
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+        </select>
+    </div>
+    <input type="text" name="fav_fruit[]" placeholder="favorite fruit">
+    <input type="text" name="fav_fruit[]" placeholder="favorite fruit">
+    <input type="text" name="fav_fruit[]" placeholder="favorite fruit">
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>
