@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js_regex</title>
+    <script>
+        // Feature Set 1
+        var string = 'hello';
+        var fs1a = /e/;
+        console.log('Result 1a: ', string.match(fs1a));
+        console.log('Result 1a: ', string.search(fs1a));
+
+        string = 'HE entErerd';
+        var fs1b = /e/gi;
+        console.log('Result 1b: ', string.match(fs1b));
+        console.log('Result 1b: ', string.search(fs1b));
+
+        var string1 = 'stir the star';
+        var string2 = 'stim the stat';
+        var string3 = 'stir the stat';
+        var string4 = 'stim the star';
+        var fs1c = /st[ai]r/g;
+        console.log('Result 1c: ', string1.match(fs1c));
+        console.log('Result 1c: ', string2.match(fs1c));
+        console.log('Result 1c: ', string3.match(fs1c));
+        console.log('Result 1c: ', string4.match(fs1c));
+
+        // Feature Set 2
+        var phone01='818 555 1212';
+        var phone02='818-555-1212';
+        var phone03='1818 555 1212';
+        var phone04='1818-555-1212';
+        var phone05='1 818 555 1212';
+        var phone06='1-818 555 1212';
+        var phone07='(818) 555 1212';
+        var phone08='8185551212';
+        var phone09='818   555   1212';
+        var phone10='818 555-1212';
+        var phone11='18185551212';
+        var phone12='818555121';
+        var phone13='818?5551212';
+        var phone14='81855-55-1212';
+        var phone15='555-1212';
+        var phone16='eight one eight, five five five, one two one two';
+        var validPhoneNumber = /^[1]?[(]?[ \-]?[0-9]{3}[)]?[ \-]*[0-9]{3}[ \-]*[0-9]{4}$/;
+
+        console.log('These should work:');
+        console.log('Result 2.01: ', phone01.match(validPhoneNumber));
+        console.log('Result 2.02: ', phone02.match(validPhoneNumber));
+        console.log('Result 2.03: ', phone03.match(validPhoneNumber));
+        console.log('Result 2.04: ', phone04.match(validPhoneNumber));
+        console.log('Result 2.05: ', phone05.match(validPhoneNumber));
+        console.log('Result 2.06: ', phone06.match(validPhoneNumber));
+        console.log('Result 2.07: ', phone07.match(validPhoneNumber));
+        console.log('Result 2.08: ', phone08.match(validPhoneNumber));
+        console.log('Result 2.09: ', phone09.match(validPhoneNumber));
+        console.log('Result 2.10: ', phone10.match(validPhoneNumber));
+        console.log('Result 2.11: ', phone11.match(validPhoneNumber));
+        console.log('These should fail:');
+        console.log('Result 2.12: ', phone12.match(validPhoneNumber));
+        console.log('Result 2.13: ', phone13.match(validPhoneNumber));
+        console.log('Result 2.14: ', phone14.match(validPhoneNumber));
+        console.log('Result 2.15: ', phone15.match(validPhoneNumber));
+        console.log('Result 2.16: ', phone16.match(validPhoneNumber));
+
+        // Feature Set 3
+        password1 = 'helloDude3';
+        password2 = 'Pa5sWoRd';
+        password3 = 'thisIsaReallyL0NGpassword';
+        password4 = 'short';
+        password5 = 'nocapsbutanumber1';
+        password6 = '5tartsWithANumber';
+        password7 = 'ALLCAPSBUT4NUMBER';
+        password8 = 'toDamnManyLettersForThisToBeAValidP4sswordYouKnowIt';
+        password9 = 'ill#g@l_characters';
+        validPasswordRegex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])[a-zA-Z][a-zA-Z0-9]{5,31}$/;
+
+        console.log('These should work:');
+        console.log('Result 3.1: ', password1.match(validPasswordRegex));
+        console.log('Result 3.2: ', password2.match(validPasswordRegex));
+        console.log('Result 3.3: ', password3.match(validPasswordRegex));
+        console.log('These should fail:');
+        console.log('Result 3.4: ', password4.match(validPasswordRegex));
+        console.log('Result 3.5: ', password5.match(validPasswordRegex));
+        console.log('Result 3.6: ', password6.match(validPasswordRegex));
+        console.log('Result 3.7: ', password7.match(validPasswordRegex));
+        console.log('Result 3.8: ', password8.match(validPasswordRegex));
+        console.log('Result 3.9: ', password9.match(validPasswordRegex));
+
+    </script>
+</head>
+<body>
+<h1>JavaScript - Regular Expressions</h1>
+</body>
+</html>
