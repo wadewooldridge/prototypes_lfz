@@ -2,4 +2,3 @@
 ### Directory Operations
 
 >#### Instructions can be found <a href="http://learning-fuze.github.io/prototypes_C11/#/PHP-Directory-Operations" target="_blank">HERE</a>
->#### Available 11/08/2016 @ 6:00pm

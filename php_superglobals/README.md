@@ -2,4 +2,3 @@
 ### Super Globals
 
 >#### Instructions can be found <a href="http://learning-fuze.github.io/prototypes_C11/#/PHP-Super-Globals" target="_blank">HERE</a>
->#### Available 11/03/2016 @ 2:00pm

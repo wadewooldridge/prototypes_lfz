@@ -2,4 +2,3 @@
 ### User Authentication
 
 >#### Instructions can be found <a href="http://learning-fuze.github.io/prototypes_C11/#/PHP-User-Auth" target="_blank">HERE</a>
->#### Available 3/18/2016 @ 11:00am

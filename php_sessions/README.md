@@ -2,4 +2,3 @@
 ### Sessions
 
 >#### Instructions can be found <a href="http://learning-fuze.github.io/prototypes_C11/#/PHP-Sessions" target="_blank">HERE</a>
->#### Available 11/4/2016 @ 10:00am
