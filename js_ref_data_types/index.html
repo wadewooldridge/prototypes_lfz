@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Reference Data Types</title>
+    <script>
+        console.log('Feature set 1.0 - Student array.');
+        var students = ['Ashley', 'Brooke', 'Chloe', 'Dierdre', 'Eleanor', 'Francine'];
+        console.log('Third student:', students[2]);
+
+        console.log('Feature set 1.1 - Array methods.');
+        console.log('Students:', students);
+        console.log('Length:  ', students.length);
+        students.push('Gloria');
+        students.push('Heloise');
+        console.log('Students:', students);
+        console.log('Length:  ', students.length);
+
+        console.log('Feature set 2.0 - Build an object.');
+        var student = {};
+        student.firstName = 'Irving';
+        student.lastName = 'Berlin';
+        student.age = 87;
+        student.school = 'Pepperdine University';
+        student.questionList = [];
+        student.hasQuestion = false;
+        console.log(student);
+
+        console.log('Feature set 2.1 - Adding methods.');
+        student.greeting = function() {
+            return 'Hello, my name is ' + this.firstName;
+        };
+        student.aboutMe = function() {
+            return 'My full name is ' + this.firstName + ' ' + this.lastName + '; I am ' + this.age +
+                            ' years old, and I am a student at ' + this.school + '.';
+        };
+        student.askQuestion = function(question) {
+            this.questionList.push(question);
+            this.hasQuestion = true;
+            return 'A question has been added to your list (total now is ' + this.questionList.length + ').';
+        };
+        student.answerQuestion = function() {
+            if (this.hasQuestion) {
+                var retVal = this.questionList.pop();
+                this.hasQuestion = (this.questionList.length !== 0);
+                return retVal;
+            } else {
+                return 'You have no pending questions.';
+            }
+        };
+        console.log(student);
+        console.log('Feature set 2.2 - Testing student methods.')
+        console.log('greeting(): ' + student.greeting());
+        console.log('aboutMe(): ' + student.aboutMe());
+        console.log('answerQuestion(): ' + student.answerQuestion());
+        console.log('askQuestion(...): ' + student.askQuestion('What color is the sky in your world?'));
+        console.log('askQuestion(...): ' + student.askQuestion('Is C# the same as Db?'));
+        console.log('askQuestion(...): ' + student.askQuestion('What is the capital of Lithuania?'));
+        console.log('answerQuestion(): ' + student.answerQuestion());
+        console.log('answerQuestion(): ' + student.answerQuestion());
+        console.log('answerQuestion(): ' + student.answerQuestion());
+        console.log('answerQuestion(): ' + student.answerQuestion());
+
+        console.log('student: ' + student);
+        console.log('student: ', student);
+    </script>
+</head>
+<body>
+<h3>No direct browser output; see console log.</h3>
+</body>
+</html>
