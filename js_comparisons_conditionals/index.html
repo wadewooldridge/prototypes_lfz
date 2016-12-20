@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Comparisons and Conditionals</title>
+    <script>
+        /* Feature Set 1. */
+        var mySmallNumber = 5;
+        var myString = "5";
+        var myBigNumber = 255;
+
+        /* Feature Set 2. */
+        var output1 = (mySmallNumber == myString);
+        var output2 = (mySmallNumber === myString);
+        var output3 = (mySmallNumber < myBigNumber);
+        var output4 = (mySmallNumber > myBigNumber);
+
+        console.log("output1 = ", output1);
+        console.log("output2 = ", output2);
+        console.log("output3 = ", output3);
+        console.log("output4 = ", output4);
+
+        /* Feature Set 3. */
+        var gameNumber = 64;
+        var userInput1 = 32;
+        var userInput2 = gameNumber;
+
+        /* Feature Set 4. */
+        function logComparison(guess, rightAnswer) {
+            if (guess < 1 || guess > 100) {
+                console.log("Invalid guess - ", guess)
+            }
+            else if (guess < rightAnswer) {
+                console.log("Your guess is too low.");
+            }
+            else if (guess > rightAnswer) {
+                console.log("Your guess is too high.");
+            }
+            else {
+                console.log("We have a WINNER!");
+            }
+        }
+
+        logComparison(userInput1, gameNumber);
+        logComparison(userInput2, gameNumber);
+
+        /* Feature Set 5. */
+        /* NOTE: The problem given is not a good use of the switch statement, since JavaScript does not
+           implicitly support ranges on switch statements, and the switch(true) with cases is awkward.
+           The problem as stated makes (n-10) to 'too low but warm", but (n-9) is 'way off'.
+        */
+        function logComparisonWithSwitch(guess, rightAnswer) {
+            switch (rightAnswer - guess) {
+                case 0:
+                    console.log("We have a WINNER!");
+                    break;
+                case 10:
+                    console.log("Too low, but you're getting warm.");
+                    break;
+                case -10:
+                    console.log("Too high, but you're getting warm.");
+                    break;
+                case 25:
+                    console.log("Too low, and cold to boot.");
+                    break;
+                case -25:
+                    console.log("Too high, and cold to boot.");
+                    break;
+                case NaN:
+                    console.log("You're not even in the ballpark.");
+                    break;
+                default:
+                    console.log("You're way off.");
+                    break;
+            }
+        }
+
+        logComparisonWithSwitch(userInput1, gameNumber);
+        logComparisonWithSwitch(userInput2, gameNumber);
+    </script>
+</head>
+<body>
+    <h3>No browser window output; use &lt;F12&gt; to see results.</h3>
+</body>
+</html>
