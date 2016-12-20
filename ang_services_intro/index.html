@@ -2,10 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
     <title>Angular Services Intro</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
 </head>
-<body>
+<body ng-app="GammaApp">
+<div ng-controller="GammaController as gc">
+    <h3>Hey, let's search iTunes!</h3>
+    <label for="search-input">Search for what:</label>
+    <input type="text" id="search-input" ng-model="gc.searchText">
+    <br>
+    <button class='btn btn-primary' ng-click="gc.startSearch()">Start Search</button>
+    <hr>
+    <h3 ng-show="gc.searchStatus !== null && gc.searchStatus.length > 0">{{gc.searchStatus}}</h3>
+    <table class="table table-bordered table-condensed table-striped">
+        <thead ng-show="gc.searchResults.length > 0">
+        <th>Artist</th>
+        <th>Track</th>
+        <th>Artwork</th>
+        </thead>
+        <tbody>
+        <tr ng-repeat="entry in gc.searchResults">
+            <td>{{entry.artistName}}</td>
+            <td>{{entry.trackName}}</td>
+            <td><img src="{{entry.artworkUrl100}}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 
 <script src="script.js"></script>
 </body>
